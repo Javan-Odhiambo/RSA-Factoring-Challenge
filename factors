@@ -1,0 +1,33 @@
+#!/usr/bin/python3
+import sys
+
+
+def factors(number):
+    """ Factorize a number into two factors
+        Args:
+            number (int): Number whose factors are to be determined.
+        Returns:
+            fact1 (int): 1st factor
+            fact2 (int): 2nd factor
+    """
+    fact1 = 2
+    while number % fact1:
+        fact1 += 1
+
+    fact2 = number // fact1
+    return (fact1, fact2)
+
+def main():
+    """ Entry point of the program
+
+        Returns: None	
+    """
+    filepath = sys.argv[1]
+    with open(filepath, "r") as file:
+        for line in file.readlines():
+            num = int(line.rstrip("/n"))
+            a, b = factors(num)
+            print("{}={}*{}".format(num, b, a))
+
+if __name__ == "__main__":
+    main()
